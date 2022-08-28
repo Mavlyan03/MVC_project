@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Instructor</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+<div>
+    <form th:action="@{saveInstructor}"
+          th:object="${newInstructor}"
+          method="post"
+          style="text-align:center; margin-top:90px; font-size: 15px;">
+        <input type="hidden" name = "id" th:field="*{instructorId}">
+        <input type="text"  name="First Name" th:field="*{firstName}" placeholder="First Name">
+        <br><br>
+        <input type="text"  name="Last Name" th:field="*{lastName}" placeholder="Last Name">
+        <br><br>
+        <input type="text" name="Phone number" th:field="*{phoneNumber}" placeholder="Phone number">
+        <br><br>
+        <input type="email" name="Email" th:field="*{email}" placeholder="Email">
+        <br><br>
+        <input type="text" name="Specialization" th:field="*{specialization}" placeholder="Specialization">
+        <br><br>
+        <input type="submit" value="Add">
+    </form>
+</div>
+</body>
+</html>

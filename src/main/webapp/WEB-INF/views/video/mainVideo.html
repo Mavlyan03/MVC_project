@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Videos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>table,
+td {
+    border: 1px solid #333;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+}
+
+thead,
+tfoot {
+    background-color: #e8e5e5;
+    color: #344712;
+}
+</style>
+<style>
+    table, th, td {
+        border: 1px solid #1e1818;
+        padding: 3px;
+    }
+</style>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Video Name</th>
+        <th scope="col">Link</th>
+        <th scope="col">Lesson</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="video:${allVideos}">
+        <th th:text="${video.videoId}"></th>
+        <th th:text="${video.videoName}"></th>
+        <th th:text="${video.link}"></th>
+        <th th:text="${video.getLesson().getLessonName()}"></th>
+        <td>
+            <a th:href="@{/videos/updateVideo/{videoId}(videoId=${video.getVideoId()})}">
+                <button style="height: 40px; width: 80px; background-color:blue;">update</button>
+            </a>
+        </td>
+        <td><form th:method="DELETE" th:action="@{/videos/{lessonId}/{videoId}/deleteVideo(lessonId=${lessonId},videoId=${video.getVideoId()})}">
+            <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:#abd21e;"/></form></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/videos/{lessonId}/newVideo(lessonId=${lessonId})}">
+    <button type="button" class="btn btn-primary btn-sm">Add Video</button>
+</a>
+<!--<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Course"-->
+<!--       onclick="window.location.href = 'newCourse'">-->
+</body>
+</html>
+
+

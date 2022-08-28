@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Specialization</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="instructor:${allInstructors}">
+        <th scope="row" th:text="${instructor.instructorId}"></th>
+        <td th:text="${instructor.firstName}"></td>
+        <td th:text="${instructor.lastName}"></td>
+        <td th:text="${instructor.phoneNumber}"></td>
+        <td th:email="${instructor.email}"></td>
+        <td th:field="${instructor.specialization}"></td>
+        <td>
+            <a th:href="@{/instructors/updateInstructor/{instructorId}(instructorId=${instructor.getInstructorId()})}">
+                <button style="height: 40px; width: 80px; background-color:blue;">update</button>
+            </a>
+        </td>
+        <td><form th:method="DELETE" th:action="@{/instructors/{id}/{instructorId}/delete(id=${companyId},instructorId=${instructor.getInstructorId()})}">
+            <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:violet;"/></form></td>
+
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/instructors/{companyId}/newInstructor(companyId=${companyId})}">
+    <button type="button" class="btn btn-primary btn-sm">Add Instructor</button>
+</a>
+
+</body>
+</html>

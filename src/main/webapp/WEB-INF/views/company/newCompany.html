@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Company</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style media="screen">
+        form-question {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 0 3rem;
+            min-height: 3rem;
+        }
+        form-question__title {
+            color: #342357;
+            font-size: 1.5rem;
+            padding: 1rem;
+        }
+        input-container {
+            border-bottom: solid 2px #333333;
+        }
+        .input-container input {
+            border: none;
+            box-sizing: border-box;
+            outline: 0;
+            padding: .75rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<body>
+<div style = "text-align:center; margin-top:200px; font-size: 30px;">
+    <form
+            action="#"
+            th:method="POST"
+            th:action="@{save}"
+            th:object="${newCompany}"
+
+            style="text-align:center; margin-top:200px; font-size: 30px;">
+
+        <input type="hidden" name = "id" th:field="*{companyId}">
+        <input type="text"  name="companyName" th:field="*{companyName}" placeholder="Company Name">
+        <br><br>
+        <input type="text"  name="locatedCountry" th:field="*{locatedCountry}" placeholder="Located Country">
+        <br><br>
+        <input type="submit" value="Add">
+    </form>
+</div>
+
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>
+
