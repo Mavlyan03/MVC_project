@@ -51,9 +51,4 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.assignStudentToCourse(studentId,courseId);
     }
 
-    @Override
-    public List<Student> countOfStudents(Long id) {
-        return studentRepository.countOfStudents(id);
-    }
-
 }

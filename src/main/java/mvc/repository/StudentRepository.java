@@ -21,7 +21,5 @@ public interface StudentRepository {
 
     void assignStudentToCourse(Long studentId,Long courseId);
 
-    List<Student> countOfStudents(Long id);
-
 
 }

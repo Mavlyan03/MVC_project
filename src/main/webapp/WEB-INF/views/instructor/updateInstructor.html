@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style>
         body{
+            background-image: url("https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
             text-align: center;
             margin: 100px;
         }
@@ -18,19 +19,19 @@
 <body>
 <form th:action="@{/instructors/{companyId}/{instructorId}/saveUpdate(companyId=${companyId},instructorId=${instructorId})}"
       th:object="${instructor}"
-      th:method="post">
-    <div><input th:field="*{firstName}">First Name</div>
-    <br><br>
-    <div><input th:field="*{lastName}">Last Name</div>
-    <br><br>
-    <div><input th:field="*{phoneNumber}">Phone number</div>
-    <br><br>
-    <div><input th:field="*{email}">Email</div>
-    <br><br>
-    <div><input th:field="*{specialization}">Specialization</div>
-    <br><br>
+      th:method="post"
+      style="text-align:center; margin-top:50px; font-size: 15px;">
+    <div><input th:field="*{firstName}"></div>
+    <br>
+    <div><input th:field="*{lastName}"></div>
+    <br>
+    <div><input th:field="*{phoneNumber}"></div>
+    <br>
+    <div><input th:field="*{email}"></div>
+    <br>
+    <div><input th:field="*{specialization}"></div>
+    <br>
     <div><input type="submit" value="update"></div>
-
 </form>
 </body>
 

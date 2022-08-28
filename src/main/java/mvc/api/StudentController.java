@@ -33,8 +33,7 @@ public class StudentController {
     private String getAllStudents(@PathVariable("companyId")Long companyId, Model model,@ModelAttribute("course")Course course) {
         model.addAttribute("allStudents", studentService.getAllStudents(companyId));
         model.addAttribute("companyId",companyId);
-        Company company = companyService.getCompanyById(companyId);
-        List<Course> courses = company.getCourses();
+//        Company company = companyService.getCompanyById(companyId);
         model.addAttribute("courses", courseService.getAllCourse(companyId));
         return "student/mainStudent";
     }
@@ -88,10 +87,4 @@ public class StudentController {
         return "redirect:/students/allStudents/ "+ companyId;
     }
 
-    @GetMapping("/countOfStudents/{companyId}")
-    private String countOfStudents(@PathVariable("companyId")Long id,Model model) {
-        List<Student> students = studentService.countOfStudents(id);
-       model.addAttribute("students",students.size());
-        return "student/mainStudent";
-    }
 }

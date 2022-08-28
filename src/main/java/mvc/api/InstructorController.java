@@ -1,7 +1,5 @@
 package mvc.api;
 
-import mvc.model.Company;
-import mvc.model.Course;
 import mvc.model.Instructor;
 import mvc.service.CourseService;
 import mvc.service.InstructorService;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/instructors")
 public class InstructorController {
-
     private final InstructorService instructorService;
 
     private final CourseService courseService;
@@ -74,4 +71,5 @@ public class InstructorController {
         instructorService.deleteInstructorById(instructorId);
         return "redirect:/instructors/allInstructors/ " + id;
     }
+
 }

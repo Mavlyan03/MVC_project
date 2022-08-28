@@ -2,7 +2,6 @@ package mvc.serviceImpl;
 
 import mvc.model.Instructor;
 import mvc.repository.InstructorRepository;
-import mvc.repositoryImpl.InstructorRepositoryImpl;
 import mvc.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,4 +49,5 @@ public class InstructorServiceImpl implements InstructorService {
     public void assignInstructorToCourse(Long instructorId, Long courseId) {
         instructorRepository.assignInstructorToCourse(instructorId,courseId);
     }
+
 }

@@ -8,7 +8,35 @@
 
 </head>
 <body>
-<table class="table table-bordered">
+<style>table,
+td {
+    border: 1px solid #333;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+}
+
+thead,
+tfoot {
+    background-color: #e8e5e5;
+    color: #344712;
+}
+</style>
+<style>
+    table, th, td {
+        border: 1px solid #1e1818;
+        padding: 3px;
+    }
+    button {
+        background: darkseagreen;
+        padding: 1em 2em;
+        color: #e8e5e5;
+        border: 0;
+    }
+
+</style>
+
+<table class="table">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -27,11 +55,11 @@
         <td th:text="${instructor.firstName}"></td>
         <td th:text="${instructor.lastName}"></td>
         <td th:text="${instructor.phoneNumber}"></td>
-        <td th:email="${instructor.email}"></td>
-        <td th:field="${instructor.specialization}"></td>
+        <td th:text="${instructor.email}"></td>
+        <td th:text="${instructor.specialization}"></td>
         <td>
             <a th:href="@{/instructors/updateInstructor/{instructorId}(instructorId=${instructor.getInstructorId()})}">
-                <button style="height: 40px; width: 80px; background-color:blue;">update</button>
+                <input type="submit" value="update" style="height: 40px; width: 80px; background-color:blue;"/>
             </a>
         </td>
         <td><form th:method="DELETE" th:action="@{/instructors/{id}/{instructorId}/delete(id=${companyId},instructorId=${instructor.getInstructorId()})}">
@@ -42,6 +70,9 @@
 </table>
 <a th:href="@{/instructors/{companyId}/newInstructor(companyId=${companyId})}">
     <button type="button" class="btn btn-primary btn-sm">Add Instructor</button>
+</a>
+<a th:href="@{/companies/allCompanies}">
+    <button type="button" class="btn btn-primary btn-sm">Go back</button>
 </a>
 
 </body>

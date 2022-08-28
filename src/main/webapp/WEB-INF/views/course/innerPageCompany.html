@@ -7,8 +7,35 @@
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
+<style>table,
+td {
+    border: 1px solid #333;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+}
 
-<table class="table table-bordered">
+thead,
+tfoot {
+    background-color: #e8e5e5;
+    color: #344712;
+}
+</style>
+<style>
+    table, th, td {
+        border: 1px solid #1e1818;
+        padding: 3px;
+    }
+    button {
+        background: darkseagreen;
+        padding: 1em 2em;
+        color: #e8e5e5;
+        border: 0;
+    }
+
+</style>
+
+<table class="table">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -28,14 +55,14 @@
     <tr th:each="course:${allCourses}">
         <th scope="row" th:text="${course.courseId}"></th>
         <td th:text="${course.course_name}"></td>
-        <td th:date="${course.dateOfStart}"></td>
-        <td th:number="${course.duration}"></td>
+        <td th:text="${course.dateOfStart}"></td>
+        <td th:text="${course.duration}"></td>
         <td th:text="${course.image}"></td>
         <td th:text="${course.description}"></td>
         <td th:text="${course.getCompany().getCompanyName()}"></td>
         <td>
             <a th:href="@{/courses/update/{courseId}(courseId=${course.getCourseId()})}">
-                <button style="height: 40px; width: 80px; background-color:blue;">update</button>
+                <input type="submit" value="update" style="height: 40px; width: 80px; background-color:blue;"/>
             </a>
         </td>
         <td>
@@ -45,15 +72,8 @@
             </form>
         </td>
 
-        <!--        <td> <a th:href="@{/students/allStudents/{courseId}(courseId=${course.getCourseId()})}">-->
-        <!--            <input type="submit" value="student" style="height: 40px; width: 80px;background: aqua;"/></a>-->
-
-        <!--        <td> <a th:href="@{/instructors/allInstructors/{companyId}(companyId=${companyId})}">-->
-        <!--            <input type="submit" value="instructor" style="height: 40px;width: 80px;background: lightcoral"></a></td>-->
-
         <td><a th:href="@{/lessons/allLessons/{courseId}(courseId=${course.getCourseId()})}">
             <input type="submit" value="lesson" style="height: 40px; width: 100px;background: cadetblue"></a></td>
-
 
        <td>
             <form th:method="POST"
@@ -67,12 +87,14 @@
                 <input type="submit" value="submit" style="height: 30px;width: 60px; background: azure"/>
             </form>
         </td>
-
     </tr>
     </tbody>
 </table>
 <a th:href="@{/courses/{id}/newCourse(id=${companyId})}">
     <button type="button" class="btn btn-primary btn-sm">Add Course</button>
+</a>
+<a th:href="@{/companies/allCompanies}">
+    <button type="button" class="btn btn-primary btn-sm">Go back</button>
 </a>
 
 </body>

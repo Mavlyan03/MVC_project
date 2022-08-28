@@ -1,7 +1,6 @@
 package mvc.service;
 
 import mvc.model.Instructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,4 +17,5 @@ public interface InstructorService {
     void deleteInstructorById(Long id);
 
     void assignInstructorToCourse(Long instructorId,Long courseId);
+
 }

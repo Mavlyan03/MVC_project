@@ -67,11 +67,6 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
 
-    @Override
-    public List<Student> countOfStudents(Long id) {
-        return entityManager.createQuery("SELECT COUNT(Student.studentId) FROM Student s where s.company.companyId = : id",Student.class)
-                .setParameter("id",id).getResultList();
-    }
 
 
 }

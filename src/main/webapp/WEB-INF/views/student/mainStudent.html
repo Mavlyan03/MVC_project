@@ -9,7 +9,6 @@
 <style>table,
 td {
     border: 1px solid #333;
-    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     font-size: 15px;
@@ -26,18 +25,16 @@ tfoot {
         border: 1px solid #1e1818;
         padding: 3px;
     }
-    .modal-container {
-        justify-content: center;
-        align-items: center;
-        display: none;
-    }
-    .modal {
-        width: 300px;
-        height: 200px;
-        background-color: mediumaquamarine;
-    }
+   button {
+       background: darkseagreen;
+       padding: 1em 2em;
+       color: #e8e5e5;
+       border: 0;
+   }
+
 </style>
-<table>
+
+<table class="table">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -52,12 +49,6 @@ tfoot {
     </tr>
     </thead>
 
-        <button type="button" value="Count" class="btn btn-primary btn-sm">
-            <a th:action="GET" th:href="@{/students/countOfStudents/{companyId}(companyId=${companyId})}"
-               th:text="${students}"></a>
-
-        </button>
-
     <tbody>
     <tr th:each="student:${allStudents}">
         <th th:text="${student.studentId}"></th>
@@ -68,7 +59,7 @@ tfoot {
         <td th:text="${student.studyFormat}"></td>
         <td>
             <a th:href="@{/students/update/{studentId}(studentId=${student.getStudentId()})}">
-                <button style="height: 40px; width: 80px; background-color:blue;">update</button>
+                <input type="submit" value="update" style="height: 40px; width: 80px; background-color:blue;"/>
             </a>
         </td>
         <td><form th:method="DELETE" th:action="@{/students/{studentId}/{companyId}/delete(studentId=${student.studentId},companyId=${companyId})}">
@@ -85,7 +76,6 @@ tfoot {
                 <input type="submit" value="submit" style="height: 30px; width: 60px; background: darkseagreen;"/>
             </form>
         </td>
-
     </tr>
     </tbody>
 </table>
@@ -93,10 +83,15 @@ tfoot {
 <a th:href="@{/students/{companyId}/newStudent(companyId=${companyId})}">
     <button type="button" class="btn btn-primary btn-sm">Add Student</button>
 </a>
+<a th:href="@{/companies/allCompanies}">
+    <button type="button" class="btn btn-primary btn-sm">Go back</button>
+</a>
 
 
-
-
+<button type="button" class="btn btn-primary btn-sm">
+    <th scope="col">Count of students:</th>
+    <th th:text="${allStudents.size()}"></th>
+</button>
 
 </body>
 </html>

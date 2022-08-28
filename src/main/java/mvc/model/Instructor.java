@@ -37,7 +37,11 @@ public class Instructor {
     @JoinTable
     private List<Course> courses;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST})
     private Company company;
 
     public void addCourse(Course course) {

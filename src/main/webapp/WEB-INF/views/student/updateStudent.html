@@ -13,20 +13,28 @@
             padding: .75rem;
             width: 100%;
         }
+        body {
+            background-image: url("https://images.pexels.com/photos/7925847/pexels-photo-7925847.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+        }
     </style>
 </head>
 
 <body>
 <form th:action="@{/students/{companyId}/{studentId}/saveUpdateStudent(companyId=${companyId},studentId=${studentId})}"
       th:object="${student}"
-      th:method="post">
+      th:method="post"
+      style="text-align:center; margin-top:60px; font-size: 15px;">
     <div><input name="First Name" th:field="*{firstName}"></div>
+    <br>
     <div><input name="Last Name" th:field="*{lastName}"></div>
+    <br>
     <div><input name="Phone number" th:field="*{phoneNumber}"></div>
+    <br>
     <div><input name="Enter email" th:field="*{email}"></div>
+    <br>
     <div><input name="Study Format" th:field="*{studyFormat}"></div>
+    <br>
     <div><input  type="submit" value="update"></div>
-
 </form>
 </body>
 

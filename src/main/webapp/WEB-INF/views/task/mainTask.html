@@ -43,7 +43,7 @@ tfoot {
     <tbody>
     <tr th:each="task:${allTasks}">
         <th th:text="${task.taskId}"></th>
-        <th th:date="${task.deadline}"></th>
+        <th th:text="${task.deadline}"></th>
         <th th:text="${task.taskName}"></th>
         <th th:text="${task.taskText}"></th>
         <th th:text="${task.getLessons().getLessonName()}"></th>
@@ -60,6 +60,9 @@ tfoot {
 </table>
 <a th:href="@{/tasks/{lessonId}/newTask(lessonId=${lessonId})}">
     <button type="button" class="btn btn-primary btn-sm">Add Task</button>
+</a>
+<a th:href="@{/companies/allCompanies}">
+    <button type="button" class="btn btn-primary btn-sm">Go back</button>
 </a>
 <!--<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Course"-->
 <!--       onclick="window.location.href = 'newCourse'">-->

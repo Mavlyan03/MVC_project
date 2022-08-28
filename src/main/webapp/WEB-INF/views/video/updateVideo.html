@@ -13,6 +13,9 @@
             padding: .75rem;
             width: 100%;
         }
+        body {
+            background-image: url("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        }
     </style>
 </head>
 
@@ -20,11 +23,11 @@
 <form th:action="@{/videos/{lessonId}/{videoId}/saveUpdateVideo(lessonId=${lessonId},videoId=${videoId})}"
       th:object="${video}"
       th:method="post"
-      style="text-align:center; margin-top:90px; font-size: 15px;">
+      style="text-align:center; margin-top:60px; font-size: 15px;">
     <div><input name="Video Name" th:field="*{videoName}"></div>
-
+    <br>
     <div><input name="Video Link" th:field="*{link}"></div>
-
+    <br>
     <div><input  type="submit" value="update"></div>
 </form>
 </body>
