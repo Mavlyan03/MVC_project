@@ -63,7 +63,7 @@ public class InstructorController {
                                @PathVariable("instructorId")Long id,
                                @ModelAttribute("instructor")Instructor instructor) {
         instructorService.updateInstructor(id,instructor);
-        return "redirect:/instructors/allInstructors/"+ companyId;
+        return "redirect:/instructors/allInstructors/ "+ companyId;
     }
 
     @PostMapping("/{id}/{instructorId}/delete")

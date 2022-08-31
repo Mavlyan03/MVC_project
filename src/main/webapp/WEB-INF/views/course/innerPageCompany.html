@@ -15,6 +15,11 @@ td {
     font-size: 15px;
 }
 
+
+table,th,td {
+    border: 1px solid #333333;
+    padding: 3px;
+}
 thead,
 tfoot {
     background-color: #e8e5e5;
@@ -34,7 +39,7 @@ tfoot {
     }
 
 </style>
-<table class="table">
+<table class="table table-bordered">
     <thead class="table-dark">
     <tr>
         <th scope="col">#</th>
@@ -52,7 +57,7 @@ tfoot {
     </thead>
     <tbody>
     <tr th:each="course:${allCourses}">
-        <th scope="row" th:text="${course.courseId}"></th>
+        <td scope="row" th:text="${course.courseId}"></td>
         <td th:text="${course.course_name}"></td>
         <td th:text="${course.dateOfStart}"></td>
         <td th:text="${course.duration}"></td>
