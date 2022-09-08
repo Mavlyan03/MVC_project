@@ -43,10 +43,11 @@ public class CompanyController {
     }
 
     @GetMapping("/getCompany/{id}")
-    private String getCompanyById(@PathVariable("id") Long id,Model model) {
+    private String getCompanyById(@PathVariable("id") Long id,
+                                  @PathVariable("getCompany")String getCompany, Model model) {
         model.addAttribute("company",companyService.getCompanyById(id));
+        System.out.println(getCompany);
         return "company/mainCompany";
-
     }
 
     @GetMapping("/update/{id}")
@@ -68,12 +69,5 @@ public class CompanyController {
         companyService.deleteCompanyById(id);
         return "redirect:/companies/allCompanies";
     }
-
-//    @GetMapping("/countOfStudents/{id}")
-//    private String countOfStudents(@PathVariable("id")Long id,Model model) {
-//       List<Student> studentList = companyService.countOfStudents();
-//       model.addAttribute("count",studentList);
-//        return "company/";
-//    }
 
 }

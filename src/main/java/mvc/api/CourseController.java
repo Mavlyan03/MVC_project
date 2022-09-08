@@ -36,7 +36,6 @@ public class CourseController {
         model.addAttribute("allCourses", courseService.getAllCourse(companyId));
         model.addAttribute("companyId", companyId);
         Company company = companyService.getCompanyById(companyId);
-//        List<Instructor> instructors = company.getInstructors();
         model.addAttribute("instructors",instructorService.getAllInstructor(companyId));
         return "course/innerPageCompany";
     }
@@ -73,7 +72,7 @@ public class CourseController {
                                    @PathVariable("courseId") Long courseId,
                                    @ModelAttribute("course") Course course) {
         courseService.updateCourse(courseId, course);
-        return "redirect:/courses/allCourses/" + companyId;
+        return "redirect:/courses/allCourses/ " + companyId;
     }
 
 
@@ -89,7 +88,7 @@ public class CourseController {
                               @PathVariable("companyId") Long compId) {
         System.out.println(instructor);
         instructorService.assignInstructorToCourse(instructor.getInstructorId(),courseId);
-        return "redirect:/courses/allCourses/"+compId;
+        return "redirect:/courses/allCourses/ "+compId;
     }
 }
 
