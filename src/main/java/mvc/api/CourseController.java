@@ -32,7 +32,7 @@ public class CourseController {
     }
 
     @GetMapping("/allCourses/{companyId}")
-    private String getAllCourses(@PathVariable("companyId") Long companyId, Model model,@ModelAttribute("inst") Instructor instructor) {
+    public String getAllCourses(@PathVariable("companyId") Long companyId, Model model,@ModelAttribute("inst") Instructor instructor) {
         model.addAttribute("allCourses", courseService.getAllCourse(companyId));
         model.addAttribute("companyId", companyId);
         Company company = companyService.getCompanyById(companyId);
@@ -41,20 +41,20 @@ public class CourseController {
     }
 
     @GetMapping("{companyId}/newCourse")
-    private String newCourse(@PathVariable("companyId") Long id, Model model) {
+    public String newCourse(@PathVariable("companyId") Long id, Model model) {
         model.addAttribute("newCourse", new Course());
         model.addAttribute("companyId", id);
         return "course/newCourse";
     }
 
     @PostMapping("{companyId}/saveCourse")
-    private String saveCourse(@PathVariable("companyId") Long companyId, @ModelAttribute("newCourse") Course course) {
+    public String saveCourse(@PathVariable("companyId") Long companyId, @ModelAttribute("newCourse") Course course) {
         courseService.saveCourse(companyId, course);
         return "redirect:/courses/allCourses/ " + companyId;
     }
 
     @GetMapping("/getCourse/{courseId}")
-    private String getCourseById(@PathVariable("courseId") Long courseId, Model model) {
+    public String getCourseById(@PathVariable("courseId") Long courseId, Model model) {
         model.addAttribute("course", courseService.getCourseById(courseId));
         return "course/innerPageCompany";
     }
@@ -77,13 +77,13 @@ public class CourseController {
 
 
     @PostMapping("/{id}/{courseId}/delete")
-    private String deleteCourse(@PathVariable("id") Long id, @PathVariable("courseId") Long courseId) {
+    public String deleteCourse(@PathVariable("id") Long id, @PathVariable("courseId") Long courseId) {
         courseService.deleteCourseById(id);
         return "redirect:/courses/allCourses/ " + courseId;
     }
 
     @PostMapping("/{companyId}/{courseId}/saveAssign")
-    private String saveAssign(@PathVariable("courseId")Long courseId,
+    public String saveAssign(@PathVariable("courseId")Long courseId,
                               @ModelAttribute("inst") Instructor instructor,
                               @PathVariable("companyId") Long compId) {
         System.out.println(instructor);

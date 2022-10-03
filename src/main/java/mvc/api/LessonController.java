@@ -19,33 +19,33 @@ public class LessonController {
     }
 
     @GetMapping("/allLessons/{courseId}")
-    private String getAllLessons(@PathVariable("courseId")Long courseId, Model model) {
+    public String getAllLessons(@PathVariable("courseId")Long courseId, Model model) {
         model.addAttribute("allLessons",lessonService.getAllLessons(courseId));
         model.addAttribute("courseId",courseId);
         return "lesson/mainLesson";
     }
 
     @GetMapping("{courseId}/newLesson")
-    private String newLesson(@PathVariable("courseId")Long id,Model model) {
+    public String newLesson(@PathVariable("courseId")Long id,Model model) {
         model.addAttribute("newLesson",new Lesson());
         model.addAttribute("courseId",id);
         return "lesson/newLesson";
     }
 
     @PostMapping("{courseId}/saveLesson")
-    private String saveLesson(@PathVariable("courseId")Long id, @ModelAttribute("newLesson")Lesson lesson) {
+    public String saveLesson(@PathVariable("courseId")Long id, @ModelAttribute("newLesson")Lesson lesson) {
         lessonService.saveLesson(id,lesson);
         return "redirect:/lessons/allLessons/ " + id;
     }
 
     @GetMapping("/getLesson/{lessonId}")
-    private String getLessonById(@PathVariable("lessonId")Long id,Model model) {
+    public String getLessonById(@PathVariable("lessonId")Long id,Model model) {
         model.addAttribute("lesson",lessonService.getLessonById(id));
         return "lesson/mainLesson";
     }
 
     @GetMapping("/updateLesson/{lessonId}")
-    private String updateLesson(@PathVariable("lessonId")Long lessonId,Model model) {
+    public String updateLesson(@PathVariable("lessonId")Long lessonId,Model model) {
         Lesson lesson = lessonService.getLessonById(lessonId);
         model.addAttribute("lesson",lesson);
         model.addAttribute("courseId",lesson.getCourses().getCourseId());
@@ -53,7 +53,7 @@ public class LessonController {
     }
 
     @PostMapping("/{courseId}/{lessonId}/saveUpdateLesson")
-    private String saveUpdateLesson(@PathVariable("courseId")Long courseId,
+    public String saveUpdateLesson(@PathVariable("courseId")Long courseId,
                                     @PathVariable("lessonId")Long lessonId,
                                     @ModelAttribute("lesson")Lesson lesson) {
         lessonService.updateLesson(lessonId,lesson);
@@ -61,7 +61,7 @@ public class LessonController {
     }
 
     @PostMapping("/{courseId}/{lessonId}/deleteLesson")
-    private String deleteLesson(@PathVariable("courseId")Long id,@PathVariable("lessonId")Long lessonId) {
+    public String deleteLesson(@PathVariable("courseId")Long id,@PathVariable("lessonId")Long lessonId) {
         lessonService.deleteLessonById(lessonId);
         return "redirect:/lessons/allLessons/ " + id;
     }
